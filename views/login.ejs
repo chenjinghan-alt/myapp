@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>登录</title>
+    <!-- <%- include head %> -->
+    <%- include bootstrap4 %>
+    <style type="text/css">
+        /*表单样式*/
+        .myformdiv {
+            background-color: rgb(187, 219, 97);
+            opacity: 0.85;
+        }
+    
+        /*垂直居中，div上边界距离窗口上边的距离为窗口高度的50%，
+        实际上此时div内容整体已经偏下，再把整个身子往上移动一半即可
+        并针对不同浏览器进行兼容。
+        */
+        /* 引用原文地址：https://www.cnblogs.com/taoxiaoyao/p/12695385.html */
+        .col-center-block {
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    
+    </style>
+</head>
+<body>
+    
+    <div class="row justify-content-center ">
+    <div class="col-center-block col-sm-4 col-xs-4 jumbotron myformdiv ">  
+        <h3>欢迎登录</h3>
+    <form action="/users/login" method="post">
+        <div class="form-group row">
+            <label  class="col-sm-2 col-form-label">用户名</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputEmail3" name="username">
+            </div>
+          </div>
+       
+        <div class="form-group row">
+          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+          <div class="col-sm-10">
+            <input type="password" class="form-control" id="inputPassword3"  name="password">
+          </div>
+        </div>
+        <fieldset class="form-group row">
+          <legend class="col-form-label col-sm-2 float-sm-left pt-0">身份</legend>
+          <div class="col-sm-10">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="check" id="gridRadios1" value="users" checked>
+              <label class="form-check-label" for="gridRadios1">
+               普通用户
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="check" id="gridRadios2" value="admin">
+              <label class="form-check-label" for="gridRadios2">
+                管理员
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <div class="form-group row">
+          <div class="col-sm-10">
+            <button type="submit" class="btn btn-primary">登录</button>
+          </div>
+        </div>
+        <div>没有账号？<a href="/register">立即注册</a>!</div>
+      </form>
+    </div>
+ </div>
+
+
+
+    <!-- <div class="form-box">
+        <form action="/users/login" method="post">
+            用户名:<input type="text" name="username">
+            密码：<input type="password" name="password">
+            <label><input type="radio" name="check" value="users" checked="checked">普通用户</label>
+           <label><input type="radio" name="check" value="admin">管理员</label>
+            <input type="submit" name="" value="登录">
+        </form>
+        <div>没有账号？<a href="/register">立即注册</a>!</div>
+    </div> -->
+</body>
+</html>

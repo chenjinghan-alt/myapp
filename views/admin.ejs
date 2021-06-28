@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>管理员界面</title>
+    <!-- <%- include head %> -->
+    <%- include bootstrap4 %>
+    
+  </head>
+  <body>
+    <%- include('bar',{username:username}) %>
+    <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">序号</th>
+          <th scope="col">发表用户</th>
+          <th scope="col">标题</th>
+          <th scope="col">发布时间</th>
+          <th scope="col">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.list.map(function(item, index) { %>
+        <tr>
+          <th scope="row"><%= index+1 %></th>
+          <td><%= item.username %></td>
+          <td><a href="/detail?id=<%=item.id%>"><%= item.title %></a></td>
+          <td><%= item.time %></td>
+          <td> <a href="/write?id=<%=item.id%>&page=<%=data.curPage%>">编辑</a></td>
+          <td> <a href="article/delete?id=<%=item.id%>&page=<%=data.curPage%>">删除</a></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <% for(let i=1; i<=data.total; i++) { %>
+        <li class="page-item"><a href="/admin?page=<%= i %>" class="page-link"><%= i %></a> </li>
+        <% } %>
+      </ul>
+    </nav>
+    <!-- <div class="pages">
+      <% for(let i=1; i<=data.total; i++) { %>
+        <a href="/?page=<%= i %>"><%= i %></a>  
+      <% } %>
+    </div> -->
+  </div>
+
+    <!-- <div class="list">
+      <div class="row">
+        <span>序号</span>
+        <span>用户名</span>
+        <span>标题</span>
+        <span>发布时间</span>
+        <span>操作</span>
+      </div>
+      
+      <% data.list.map(function(item, index) { %>
+        <div class="row">
+          <span><%= index+1 %></span>
+          <span><%= item.username %></span>
+          <span><a href="/detail?id=<%=item.id%>"><%= item.title %></a></span>
+          <span><%= item.time %></span>
+          <span>
+            <a href="/write?id=<%=item.id%>&page=<%=data.curPage%>">编辑</a>
+            <a href="article/delete?id=<%=item.id%>&page=<%=data.curPage%>">删除</a>
+          </span>
+        </div>
+      <% }) %> -->
+
+      
+     
+  </body>
+</html>
